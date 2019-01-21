@@ -1,0 +1,13 @@
+variable2plot VoltageAng       # options: Frequency, VoltageAng, VoltageMag, all
+
+DATESTRING 2008-07-38 FIRSTHOUR 01 FIRSTMINUTE 25 SECONDHOUR 01 SECONDMINUTE 40
+datafolder data_example
+
+T 3 min
+firstacbus 0 1 2 3 200   # TermID's to show their autocorrelation functions
+
+coordsfilename coords.csv
+nominalvoltsfilename nominalvolts.csv
+
+
+END
