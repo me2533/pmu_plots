@@ -216,9 +216,10 @@ def doplot(log, all_data, strvar, actualtime, data, plcount, eig, ac_fn, firstac
       drawbuses.append(bus)
 
   #autocorrelation indicator
+  maplim = all_data['coords_limits']
   cmap2 = plt.get_cmap('rainbow')
   axdata = plt.subplot(gs[1])
-  x,y,c,sz = [130,130],[30,30],[0,1],[0,0]
+  x,y,c,sz = [maplim[1]+1,maplim[1]+1],[maplim[3]+1,maplim[3]+1],[0,1],[0,0]
   for i in range(len(drawbuses)):
     x.append(coords[drawbuses[i]][0])
     y.append(coords[drawbuses[i]][1])
@@ -226,8 +227,8 @@ def doplot(log, all_data, strvar, actualtime, data, plcount, eig, ac_fn, firstac
     sz.append(10+ac_fn[drawbuses[i]]*100)
   #cdata = axdata.scatter(x,y,30,c,alpha=1,cmap=cm.plasma_r,edgecolor='0.4')
   cdata = axdata.scatter(x,y,s=sz,c=c,alpha=1,cmap=cm.plasma_r,edgecolor='1',linewidth='0')
-  axdata.set_xlim(141.4,146.6)
-  axdata.set_ylim(25,28.6)
+  axdata.set_xlim(maplim[0],maplim[1])
+  axdata.set_ylim(maplim[2],maplim[3])
   axdata.text(0.99,0.88,'size = '+str(len(drawbuses)),size=8,ha='right',va='bottom',transform=axdata.transAxes)
   #axdata.text(0.99,0.88,r'$R$ = 60 [s]',size=8,ha='right',va='bottom',transform=axdata.transAxes)
   axdata.text(0.99,0.94,r'$t$ = '+ actualtime.strftime('%Y-%m-%d %H:%M:%S.%f')[:-3],size=8,ha='right',va='bottom',transform=axdata.transAxes)
