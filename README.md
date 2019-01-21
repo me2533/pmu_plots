@@ -10,8 +10,13 @@ Input:
  - Nominal voltage of each sensor's bus, as in 'nominalvolts.csv'
  - Modification of 'conf' file with the correct inputs
  
+ Output:
+ - Folder with set of plots created by the functions
+ 
  To Run:
- >> python plot_sigmaPCA.py conf
+ > python plot_sigmaPCA.py conf
+ or
+ > python plot_autocorr.py conf
 
 
 
