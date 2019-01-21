@@ -1,0 +1,7 @@
+For each bus there is a file containing the measurements, each line has the following data in the following order, separated by commas
+
+-Time from the beginning of the period (in seconds)
+-TermID
+-Frequency
+-Voltage Angle (difference with respect to reference bus, in radians)
+-Voltage Magnitude (fraction of nominal voltage)
