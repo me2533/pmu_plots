@@ -1,3 +1,5 @@
+# Copyright (c) 2019 by Mauro Escobar, IEOR Columbia University www.columbia.edu/~me2533
+
 import sys
 import os
 import numpy as np
