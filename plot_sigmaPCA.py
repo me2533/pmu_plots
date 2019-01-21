@@ -227,7 +227,7 @@ def doplot(log, all_data, strvar, actualtime, data, plcount, eig):
   latvec = [r'$\xi_1(t)$',r'$\xi_2(t)$',r'$\xi_3(t)$',r'$\xi_4(t)$']
   for i in axval.keys():
     axval[i].tick_params(axis='both', which='major', labelsize=6, direction='in')
-    axvec[i].text(0.98,0.94,latvec[i] + ': '+ strvec[i]+' eigvector', fontsize=8, ha='right',va='bottom',transform=axval[i].transAxes)
+    axvec[i].text(0.98,0.99,latvec[i] + ': '+ strvec[i]+' eigvector', fontsize=8, ha='right',va='top',transform=axvec[i].transAxes)
     axvec[i].set_xlim(maplim[0],maplim[1])
     axvec[i].set_ylim(maplim[2],maplim[3])
     axvec[i].tick_params(axis='both',which='both',bottom='off',left='off',labelbottom='off',labelleft='off')
