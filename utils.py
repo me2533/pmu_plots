@@ -199,15 +199,26 @@ def read_coordfile(log,all_data):
   coords = {}
   linenum = 0
 
+  max_x,max_y = -1e10,-1e10
+  min_x,min_y = 1e10,1e10
+
   while linenum < len(lines):
     thisline = lines[linenum]
     thisline = thisline[0:thisline.find('#')]
     thisline = thisline.split()
     if len(thisline) == 3:
-      coords[int(thisline[2])] = [ float(thisline[0]), float(thisline[1]) ]
+      x,y = float(thisline[0]), float(thisline[1])
+      coords[int(thisline[2])] = [ x, y ]
+      max_x = max(x,max_x)
+      max_y = max(y,max_y)
+      min_x = min(x,min_x)
+      min_y = min(y,min_y)
     linenum += 1
 
+  xdif = max_x-min_x
+  ydif = max_y-min_y
   all_data['coords'] = coords
+  all_data['coords_limits'] = [min_x-xdif/10.,max_x+xdif/10.,min_y-ydif/10.,max_y-ydif/10.]
   return all_data
 
 

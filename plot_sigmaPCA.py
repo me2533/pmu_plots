@@ -163,16 +163,17 @@ def doplot(log, all_data, strvar, actualtime, data, plcount, eig):
   gs = matplotlib.gridspec.GridSpec(2, 7, width_ratios=[1,1,1,1,1,1,1], height_ratios=[1, 3] )
 
   #plotting raw data
+  maplim = all_data['coords_limits']
   cmap2 = plt.get_cmap('rainbow')
   axdata = plt.subplot(gs[0:8:7])
-  x,y,c = [130,130],[30,30],[-6,6]
+  x,y,c = [maplim[1]+1,maplim[1]+1],[maplim[3]+1,maplim[3]+1],[-6,6]
   for i in range(len(drawbuses)):
     x.append(coords[drawbuses[i]][0])
     y.append(coords[drawbuses[i]][1])
     c.append(data[i,-1])
   cdata = axdata.scatter(x,y,15,c,alpha=1,cmap=cmap2,edgecolor='0.7')
-  axdata.set_xlim(141.4,146.6)
-  axdata.set_ylim(25,28.6)
+  axdata.set_xlim(maplim[0],maplim[1])
+  axdata.set_ylim(maplim[2],maplim[3])
   #axdata.text(146.55, 28.4, actualtime, fontsize=8, ha='right')
   axdata.set_title(r'$t$ = '+actualtime.strftime('%Y-%m-%d %H:%M:%S.%f')[:-3], fontsize=9)
   axdata.tick_params(axis='both',which='both',bottom='off',left='off',labelbottom='off',labelleft='off')
@@ -224,9 +225,9 @@ def doplot(log, all_data, strvar, actualtime, data, plcount, eig):
   latvec = [r'$\xi_1(t)$',r'$\xi_2(t)$',r'$\xi_3(t)$',r'$\xi_4(t)$']
   for i in axval.keys():
     axval[i].tick_params(axis='both', which='major', labelsize=6, direction='in')
-    axvec[i].text(146.55, 28.3,latvec[i] + ': '+ strvec[i]+' eigvector', fontsize=8, ha='right')
-    axvec[i].set_xlim(141.4,146.6)
-    axvec[i].set_ylim(25,28.6)
+    axvec[i].text(0.98,0.94,latvec[i] + ': '+ strvec[i]+' eigvector', fontsize=8, ha='right',va='bottom',transform=axval[i].transAxes)
+    axvec[i].set_xlim(maplim[0],maplim[1])
+    axvec[i].set_ylim(maplim[2],maplim[3])
     axvec[i].tick_params(axis='both',which='both',bottom='off',left='off',labelbottom='off',labelleft='off')
 
   xfmt = md.DateFormatter('%H:%M:%S')
@@ -257,7 +258,7 @@ def doplot(log, all_data, strvar, actualtime, data, plcount, eig):
 
   cmap = plt.get_cmap('seismic')
   c,cax = {},{}
-  x,y = [130,130],[30,30]
+  x,y = [maplim[1]+1,maplim[1]+1],[maplim[3]+1,maplim[3]+1]
   for i in range(neigs):
     c[i] = [-1,1]
 
