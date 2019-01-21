@@ -15,6 +15,7 @@ Input:
  
  To Run:
  > python plot_sigmaPCA.py conf
+ 
  or
  > python plot_autocorr.py conf
 
